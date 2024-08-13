@@ -1,0 +1,44 @@
+//code on inserting a node
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define the structure for a node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to insert a new node at the beginning
+void insert(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// Function to print the linked list
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main function
+int main() {
+    struct Node* head = NULL;
+
+    // Inserting elements
+    insert(&head, 10);
+    insert(&head, 20);
+    insert(&head, 30);
+
+    // Print the linked list
+    printf("Linked List: ");
+    printList(head);
+
+    return 0;
+}
